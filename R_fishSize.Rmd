@@ -1,0 +1,37 @@
+---
+title: "R_fishSize"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set("~/Biology/146/finalProject_fishSize")
+
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+```
+
+## R Markdown
+
+```{r}
+fishData <- read.csv("Annual_fish_comb_20200108.csv")
+head(fishData)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r, echo=TRUE}
+## Subset data to only include kelp bass
+bass1 <- subset(fishData, SP_CODE=="PCLA")
+
+## Remove all -99999 from dataset
+bass2 = bass1[-which(bass1$SIZE < 0),]
+
+##
+bass3 = bass2 %>% group_by(SITE, TRANSECT, SP_CODE, COMMON_NAME, SIZE, COUNT, AREA)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

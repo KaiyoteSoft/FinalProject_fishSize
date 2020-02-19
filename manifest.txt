@@ -1,0 +1,6 @@
+Manifest file for knb-lter-sbc.17.34.zip created on Fri Feb 14 12:21:10 MST 2020
+Annual_fish_comb_20200108.csv (14562092 bytes)
+Monthly_Fish_All_Years_20200122.csv (7227766 bytes)
+knb-lter-sbc.17.34.xml (63548 bytes)
+knb-lter-sbc.17.34.txt (31982 bytes)
+knb-lter-sbc.17.34.report.xml (56814 bytes)

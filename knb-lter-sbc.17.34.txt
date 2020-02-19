@@ -1,0 +1,1412 @@
+
+  
+    
+      uid=SBC,o=LTER,dc=ecoinformatics,dc=org
+      all
+    
+    
+      uid=lkui,o=LTER,dc=ecoinformatics,dc=org
+      all
+    
+    
+      public
+      read
+    
+  
+  
+    doi:10.6073/pasta/0a398e9bd15bdcdda4384ce1f29efdbb
+    KFCD abundance and size of reef fish
+    SBC LTER: Reef: Kelp Forest Community Dynamics: Fish abundance
+    
+      Santa Barbara Coastal LTER
+      			Marine Science Institute University of California
+			Santa Barbara, CA 93106  USA
+      sbclter@msi.ucsb.edu
+    
+    
+      Daniel C Reed
+      			Marine Science Institute University of California
+			Santa Barbara, CA 93106-6150  US
+      805-893-8363
+      dan.reed@lifesci.ucsb.edu
+      https://orcid.org/0000-0003-3015-8717
+    
+    2020-02-11
+    English
+    
+      
+        
+    These data describe the abundance and size of fish species as part
+    of SBCLTER's kelp forest monitoring program to track long-term
+    patterns in species abundance and diversity. This study began in
+    2000 in the Santa Barbara Channel, California, USA. The abundance
+    and size of all taxa of resident kelp forest fish encountered along
+    permanent transects are recorded at nine reef sites located along
+    the mainland coast of the Santa Barbara Channel and at two sites on
+    the north side of Santa Cruz Island. These sites reflect several
+    oceanographic regimes in the channel and vary in distance from
+    sources of terrestrial runoff. In these surveys, fish were counted
+    in either a 40x2m benthic quadrat, or in the water parcel 0-2m off
+    the bottom over the same area.
+  
+        
+    The two tables in this data package include: 1) The annual benthic
+    fish community survey which was conducted on 11 reefs once a year
+    around late July or early August; and 2) The monthly fish survey
+    which was conducted once a month at a subset of the sites (3 of the
+    annual sites)
+  
+        
+    The time period of data collection for the annual benthic fish
+    community survey varied among the 11 kelp forest sites. Sampling at
+    BULL, CARP, and NAPL began in 2000, sampling at the other 6 mainland
+    sites (AHND, AQUE, IVEE, GOLB, ABUR, MOHK) began in 2001 (transects
+    3, 5, 6, 7, 8 at IVEE were added in 2011). Data collection at the
+    two Santa Cruz Island sites (SCTW and SCDI) began in 2004. The
+    monthly fish survey at ABUR (Transect 1, 2, and 3), AQUE
+    (Transect1), and MOHK (Transect 1) in 2002. The Transect 2 and 3 at
+    ABUR were discontinued in June 2006.
+  
+        
+    See Methods for more information.  
+  
+      
+    
+    
+      populations
+      LTER Core Research Areas
+    
+    
+      LTER
+      populations
+      Santa Barbara Coastal
+      LTER Controlled Vocabulary v1
+    
+    
+      Kelp_forest_monitoring
+      populations
+      SBC-LTER Controlled Vocabulary
+    
+    
+      Arroyo Burro
+      Arroyo Hondo
+      Arroyo Quemado
+      Bullito
+      Carpinteria
+      Goleta Bay
+      Isla Vista
+      Mohawk
+      Naples
+      Santa Cruz Island, Diablo
+      Santa Cruz Island, Twin Harbor West
+      Santa Barbara Coastal LTER Places
+    
+    
+      fish
+      Global Change Master Directory (GCMD) v6.0.0.0.0
+    
+    
+      fish
+      Knowledge Network for Biocomplexity
+    
+    
+      Kelp_forest_monitoring
+      LTER
+      LTER Core Research Areas
+      none
+    
+    
+      
+  This data package is released under the Creative Commons License
+  Attribution 4.0 International (CC BY 4.0, see
+  https://creativecommons.org/licenses/by/4.0/). This license states
+  that consumers ("Data Users" herein) may distribute, adapt,
+  reuse, remix, and build upon this work, as long as they give
+  appropriate credit, provide a link to the license, and indicate if
+  changes were made. If redistributed, a Data User may not apply
+  additional restrictions or technological measures that prevent access.
+
+      
+  The Data User has an ethical obligation to cite the data source
+  appropriately in any publication or product that results from its use,
+  and notify the data contact or creator. Communication, collaboration,
+  or co-authorship (as appropriate) with the creators of this data
+  package is encouraged to prevent duplicate research or publication.
+  The Data User is urged to contact the authors of these data if any
+  questions about methodology or results occur. The Data User should
+  realize that these data may be actively used by others for ongoing
+  research and that coordination may be necessary to prevent duplication
+  or inappropriate use. The Data User should realize that
+  misinterpretation may occur if data are used outside of the context of
+  the original study. The Data User should be aware that data are
+  updated periodically and it is the responsibility of the Data User to
+  check for new versions of the data.
+
+      
+  While substantial efforts are made to ensure the accuracy of data and
+  associated documentation, complete accuracy of data sets cannot be
+  guaranteed. This data package (with its components) is made available
+  “as is” and with no warranty of accuracy or fitness for use. The
+  creators of this data package and the repository where these data were
+  obtained shall not be liable for any damages resulting from
+  misinterpretation, use or misuse of the data package or its
+  components.
+
+    
+    
+      
+        http://sbc.lternet.edu/
+      
+    
+    
+      
+        ABUR: Arroyo Burro Reef is located on the Santa Barbara Channel
+  near the mouth of Arroyo Burro Creek and Beach. Depth ranges from 5.4 to 7 meters.
+        
+          -119.7445915
+          -119.7445915
+          34.400275
+          34.400275
+        
+      
+      
+        AHND: Arroyo Hondo Reef is located on the Santa Barbara Channel near the east end of Gaviota State Park, CA. Depth ranges from -4.3m to -6.6 meters.
+        
+          -120.1426165
+          -120.1426165
+          34.471817
+          34.471817
+        
+      
+      
+        AQUE: Arroyo Quemado Reef: Arroyo Quemado Reef depth range from 5.4 m to 10.7 m. Reference on Land is close to US101/Arroyo Quemada Ln.
+        
+          -120.11905
+          -120.11905
+          34.46774988
+          34.46774988
+        
+      
+      
+        BULL: Builto: Bulito has three permanent transect: Transect I, III, VI. Depth Range from -5.5 to -7.3. Reference on land is close to Ranch Real road and Hollister Ranch road crossing section.
+        
+          -120.33349
+          -120.33349
+          34.45850533
+          34.45850533
+        
+      
+      
+        CARP: Carpinteria Reef is located on the Santa Barbara Channel offshore of the Carpinteria Salt Marsh. Depth range is from -2.2 to -8.8 meters
+        
+          -119.5416933
+          -119.5416933
+          34.3916319
+          34.3916319
+        
+      
+      
+        GOLB: Goleta Bay is located on the Santa Barbara Channel east of Goleta Pier. Depth range is -4.2 to -5 meters.
+        
+          -119.8221
+          -119.8221
+          34.4137165
+          34.4137165
+        
+      
+      
+        IVEE: Isla Vista (IV) Reef is located on the Santa Barbara Channel near the University of California Santa Barbara, CA. Depth range is from -8.2 to -8.8 meters.
+        
+          -119.85755
+          -119.85755
+          34.402783
+          34.402783
+        
+      
+      
+        MOHK: Mohawk Reef: Mohawk Reef depth ranges from 4.5m to 6.0 m. Reference on land is Mohawk Rd / Edgewater Way.
+        
+          -119.72957
+          -119.72957
+          34.3940708
+          34.3940708
+        
+      
+      
+        NAPL: Naples Reef is located on the Santa Barbara Channel near the community of Naples and Dos Pueblos Canyon, Santa Barbara County, CA. Depth ranges from -5.9 to -13.4 meters.
+        
+          -119.95154
+          -119.95154
+          34.4221216
+          34.4221216
+        
+      
+      
+        SCDI: Santa Cruz Island, Diablo
+        
+          -119.75763
+          -119.75763
+          34.05865
+          34.05865
+        
+      
+      
+        SCTW: Santa Cruz Island, Twin Harbor West
+        
+          -119.71513
+          -119.71513
+          34.0444335
+          34.0444335
+        
+      
+      
+        
+          
+            2000-08-01
+          
+          
+            2020-02-11
+          
+        
+      
+    
+    
+      Information Manager, Santa Barbara Coastal LTER
+      			Marine Science Institute
+			University of California
+			Santa Barbara, California 93106-6150  United States
+      805 893 2071
+      sbclter@msi.ucsb.edu
+      http://sbc.lternet.edu
+    
+    
+      Santa Barbara Coastal Long Term Ecological Research Project
+    
+    
+      
+        
+          
+            
+    The benthic fish was surveyed using two methods: 1. Annual benthic
+    fish community survey which was conducted on 11 sites once a year
+    around late July or early August, and 2 The monthly fish survey
+    which was conducted once a month at a subset of the sites.
+  
+            
+    In the annual survey, the start time that data collection began
+    differed among the sites and transects. Information on these
+    differences are listed in a table accessible at:
+    http://sbc.lternet.edu/external/Reef/Data/Kelp_Forest_Community_Dynamics/Annual_survey_site_history.csv
+  
+            
+    The monthly fish survey at ABUR (Transect 1, 2, and 3), AQUE
+    (Transect1), and MOHK (Transect 1) in 2002. The Transect 2 and 3 at
+    ABUR were discontinued in June 2006.
+  
+            
+    Count values were given a NA (-99999) if: (1) data were not
+    collected for a particular species, (2) a datasheet was lost or (3)
+    poor underwater visibility prevented fish from being surveyed
+  
+            
+    See the protocol document for more sampling information
+  
+          
+        
+        
+          SBC LTER Kelp Forest Community Structure Methods - Density of Reef Fish
+          
+             Reed
+          
+          
+            
+              https://sbclter.msi.ucsb.edu/external/Reef/Protocols/Kelp_Forest_Community_Dynamics/SBC_LTER_protocol_Reed_Kelp_forest_community_Density_fish_20181128.pdf
+            
+          
+        
+      
+    
+    
+      Santa Barbara Coastal Long Term Ecological Research Project
+      
+        Dr. Robert Miller
+        			Marine Science Institute
+			University of California
+			Santa Barbara, California 93106-6150  United States
+        805 893 6174
+        miller@msi.ucsb.edu
+        Principal Investigator
+      
+      
+        Dr. Dan Reed
+        			Marine Science Institute
+			University of California
+			Santa Barbara, California 93106-6150  United States
+        805 893 8363
+        dan.reed@lifesci.ucsb.edu
+        Co-principal Investigator
+      
+      
+        Dr. Adrian Stier
+        			Department of Ecology, Evolution and Marine Biology
+			University of California
+			Santa Barbara, California 93106-9260  United States
+        805 893 5467
+        adrian.stier@lifesci.ucsb.edu
+        Co-principal Investigator
+      
+      
+        Dr. Gretchen Hoffman
+        			Department of Ecology, Evolution and Marine Biology
+			University of California
+			Santa Barbara, California 93106-9620  United States
+        805 893 6175
+        hofmann@lifesci.ucsb.edu
+        Co-principal Investigator
+      
+      
+        Dr. David Siegel
+        			Institute for Computational Earth System Science
+			University of California
+			Santa Barbara, California 93106-3060  United States
+        805 893 4547
+        davey@icess.ucsb.edu
+        Co-principal Investigator
+      
+      
+        
+          The primary research objective of the Santa Barbara Coastal LTER is to investigate
+            the importance of land and ocean processes in structuring giant kelp
+            (Macrocystis pyrifera ) forest ecosystems. As in many temperate
+            regions, the shallow rocky reefs in the Santa Barbara Channel, California, are dominated
+            by giant kelp forests. Because of their close proximity to shore, kelp forests are
+            influenced by physical and biological processes occurring on land as well as in the open
+            ocean. SBC LTER research focuses on measuring and modeling the patterns, transport, and
+            processing of material constituents (e.g., nutrients, carbon, sediment, organisms, and
+            pollutants) from terrestrial watersheds and the coastal ocean to these reefs.
+            Specifically, we are examining the effects of these material inputs on the primary
+            production of kelp, and the population dynamics, community structure, and trophic
+            interactions of kelp forest ecosystems.
+        
+      
+      
+        
+          NSF Award OCE-9982105, OCE-0620276, OCE-1232779, OCE-1831937
+        
+      
+    
+    
+      Benthic community survey, fish abundance, all years
+      abundance and size of fish along permanent transects
+      
+        Annual_fish_comb_20200108.csv
+        14562092
+        0049d277d5f36fb6ec81cc356ab1117f
+        
+          
+            1
+            \n
+            column
+            
+              ,
+              no
+            
+          
+        
+        
+          
+            https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/34/a7899f2e57ea29a240be2c00cce7a0d4
+          
+        
+      
+      
+        
+          year
+          Year
+          Calendar year
+          integer
+          
+            
+              YYYY
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          month
+          Month
+          Calendar month
+          integer
+          
+            
+              MM
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          date
+          Date
+          Date of data collection
+          string
+          
+            
+              YYYY-MM-DD
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          site
+          Site code
+          Code for reef site. See list of codes for meaning
+          string
+          
+            
+              
+                
+                  
+                    ABUR
+                    Arroyo Burro
+                  
+                  
+                    AHND
+                    Arroyo Hondo
+                  
+                  
+                    AQUE
+                    Arroyo Quemado
+                  
+                  
+                    BULL
+                    Bulito
+                  
+                  
+                    CARP
+                    Carpinteria
+                  
+                  
+                    GOLB
+                    Goleta Bay
+                  
+                  
+                    IVEE
+                    Isla Vista
+                  
+                  
+                    MOHK
+                    Mohawk
+                  
+                  
+                    NAPL
+                    Naples
+                  
+                  
+                    SCDI
+                    Santa Cruz Island, Diablo
+                  
+                  
+                    SCTW
+                    Santa Cruz Island, Twin Harbor West Reef
+                  
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          transect
+          Tansect name
+          Each 40m transect is defined by six permanent markers (stainless stell eyebolts or rebar stakes) at 0, 8, 16, 24, 32, and 40m.
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          quad
+          Quad name
+          Used for benthic survey method only. Describes location along transect, either 0-20 or 20-40
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          side
+          Transect side
+          Used for bethic survey method only. Inshore or offshore side of transect.
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          vis
+          Visibilty
+          Approximate horizontal visibility at the beginning of the tansect
+          float
+          
+            
+              
+                meter
+              
+              0.1
+              
+                real
+                
+                  2
+                  20
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          sp_code
+          Species code
+          Two to six letter species code assigned to a species, species subset (e.g., a size, age group, or structural feature like holdfast) or a taxonomic group (e.g., compound tunicates)
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          size
+          Size
+          Estimated size of the individual
+          float
+          
+            
+              
+                centimeter
+              
+              1
+              
+                real
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          count
+          Count
+          The number of individuals of the same size counted
+          integer
+          
+            
+              
+                number
+              
+              1
+              
+                real
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          area
+          Area Surveyed
+          Total area surveyed
+          integer
+          
+            
+              
+                meterSquared
+              
+              1
+              
+                integer
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          scientific name
+          Scientific name
+          Taxonomic scientific name
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          common_name
+          Common name
+          Non scientific name referred to by the general public
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_kingdom
+          Kingdom
+          Taxonomic kindom
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_phylum
+          Phylum
+          Taxonomic phylum
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_class
+          Class
+          Taxonomic class
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_order
+          Order
+          Taxonomic order
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_family
+          Family
+          Taxonomic family
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_genus
+          Genus
+          Taxonomic genus
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          group
+          Organism group
+          Functional group of organism
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          survey
+          Survey method
+          Data collection method,. Could be benthic or standard fish sampling method (organism dependent).
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          mobility
+          Mobility
+          Either Sessile or Mobile depending on the animals locomotive schemea
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          growth_morph
+          Growth morphology
+          Whether or not the organism in question is an aggregate or solitary individual
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+      
+      74940
+    
+    
+      Monthly fish survey
+      abundance and size of fish surveyed monthly at four of the annual survey sites
+      
+        Monthly_Fish_All_Years_20200122.csv
+        7227766
+        70e9a44a84072842256bc8edf2df26af
+        
+          
+            1
+            \n
+            column
+            
+              ,
+              no
+            
+          
+        
+        
+          
+            https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/34/9c1dd9a800c1681c3123113fd8d56176
+          
+        
+      
+      
+        
+          year
+          Year
+          Calendar year
+          integer
+          
+            
+              YYYY
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          month
+          Month
+          Calendar month
+          integer
+          
+            
+              MM
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          date
+          Date
+          Date of data collection
+          string
+          
+            
+              YYYY-MM-DD
+              1
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          site
+          Site code
+          Code for reef site. See list of codes for meaning
+          string
+          
+            
+              
+                
+                  
+                    ABUR
+                    Arroyo Burro
+                  
+                  
+                    AQUE
+                    Arroyo Quemado
+                  
+                  
+                    IVEE
+                    Isla Vista
+                  
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          transect
+          Tansect name
+          Each 40m transect is defined by six permanent markers (stainless stell eyebolts or rebar stakes) at 0, 8, 16, 24, 32, and 40m.
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          vis
+          Visibilty
+          Approximate horizontal visibility at the beginning of the tansect
+          float
+          
+            
+              
+                meter
+              
+              0.1
+              
+                real
+                
+                  2
+                  20
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          sp_code
+          Species code
+          Two to six letter species code assigned to a species, species subset (e.g., a size, age group, or structural feature like holdfast) or a taxonomic group (e.g., compound tunicates)
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          size
+          Size
+          Estimated size of the individual
+          float
+          
+            
+              
+                centimeter
+              
+              1
+              
+                real
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          count
+          Count
+          The number of individuals of the same size counted
+          integer
+          
+            
+              
+                number
+              
+              1
+              
+                real
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          area
+          Area Surveyed
+          Total area surveyed
+          integer
+          
+            
+              
+                meterSquared
+              
+              1
+              
+                integer
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          scientific name
+          Scientific name
+          Taxonomic scientific name
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          common_name
+          Common name
+          Non scientific name referred to by the general public
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_kingdom
+          Kingdom
+          Taxonomic kindom
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_phylum
+          Phylum
+          Taxonomic phylum
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_class
+          Class
+          Taxonomic class
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_order
+          Order
+          Taxonomic order
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_family
+          Family
+          Taxonomic family
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          taxon_genus
+          Genus
+          Taxonomic genus
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          group
+          Organism group
+          Functional group of organism
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          survey
+          Survey method
+          Data collection method,. Could be benthic or standard fish sampling method (organism dependent).
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          mobility
+          Mobility
+          Either Sessile or Mobile depending on the animals locomotive schemea
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+        
+          growth_morph
+          Growth morphology
+          Whether or not the organism in question is an aggregate or solitary individual
+          string
+          
+            
+              
+                
+                  text
+                
+              
+            
+          
+          
+            -99999
+            value not recorded or not available
+          
+        
+      
+      39658
+    
+  
+  
+    
+      
+        
+          .01 meters
+        
+        
+          SI unit of length
+        
+        
+          area, meter squared from the LTER unit dictionary
+        
+        
+          a number
+        
+      
+    
+  
