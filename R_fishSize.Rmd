@@ -30,8 +30,47 @@ bass1 <- subset(fishData, SP_CODE=="PCLA")
 ## Remove all -99999 from dataset
 bass2 = bass1[-which(bass1$SIZE < 0),]
 
-##
-bass3 = bass2 %>% group_by(SITE, TRANSECT, SP_CODE, COMMON_NAME, SIZE, COUNT, AREA)
+## Include only the columns of interest to simplify the dataset
+bass3 = bass2[c("YEAR", "SITE", "SP_CODE", "SIZE", "COUNT")]
+
+## Replicates the rows based on the values of the "COUNT" column
+index <- rep(1:nrow(bass3), bass3$COUNT)
+bass_size <- bass3[index, ]
+
 ```
+
+
+```{r}
+##Calculate the average size of the kelp bass at each YEAR and SITE
+head(bass_size)
+bass_avg = bass_size %>% group_by(YEAR, SITE, SP_CODE) %>% 
+  summarize_at(vars(SIZE), funs(mean))
+
+##Plot average size of kelp bass by site by year 
+## The colors in each site give you a rough idea of the relative average size between sites in a given year 
+ggplot(bass_avg, aes(x=YEAR, y=SIZE))+
+  geom_col(aes(fill=SITE))+
+  labs(y="Total size across all sites")+
+  ggtitle("Average size of bass across sites and years")
+
+```
+```{r}
+## Filter out all sites except MOHK, CARP (non MPAs) and IVEE and NAPLES (MPAs)
+bass_comp = bass_avg[which(bass_avg$SITE %in% c("MOHK", "CARP", "IVEE", "NAPL")),]
+
+##Make a column that outputs "CONTROL" if CARP or MOHK. Will output "MPA" if IVEE or NAPL. 
+bass_comp$status <- ifelse(bass_comp$SITE == "MOHK" | bass_comp$SITE=="CARP", "CONTROL", "MPA")
+
+##Group by MPA status and year. Get the mean of the two different states, by year 
+bass_comp_avg = bass_comp %>% group_by(YEAR, status, SP_CODE) %>% 
+  summarize_at(vars(SIZE), funs(mean))
+
+##Make a grouped column chart that shows avg bass size for each year inside and outside of MPAs 
+## *Note: MPA status starts in 2012. 
+ggplot(bass_comp_avg, aes(fill=status, x=YEAR, y=SIZE))+
+  geom_bar(position="stack", stat="identity")
+
+```
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
