@@ -84,6 +84,8 @@ ggplot(bass_comp_post, aes(x=YEAR, y=SIZE, fill=status))+
 ```
 
 ```{r}
+###This code chunk does EXACTLY the same thing as above, but includes some extra sites. Similar trends are observed however. 
+
 ## Histogram for all bass sizes 
 ggplot(bass_size, aes(x=SIZE))+
   geom_histogram(binwidth=2, color="black", fill="white")
@@ -132,12 +134,14 @@ post_mpa = bass_comp_ttest[which(bass_comp_ttest$YEAR %in% c("2012", "2013", "20
 #Looking to see if the data is normal
 shapiro.test(pre_mpa$SIZE)
 qqPlot(pre_mpa$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
-ggplot(pre_mpa, aes(x=SIZE)) + geom_histogram()
+ggplot(pre_mpa, aes(x=SIZE)) + 
+  geom_histogram(binwidth=4, color="black", fill="white")
 
 
 shapiro.test(post_mpa$SIZE)
 qqPlot(post_mpa$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
-ggplot(post_mpa, aes(x=SIZE)) + geom_histogram()
+ggplot(post_mpa, aes(x=SIZE)) + 
+  geom_histogram(binwidth=3, color="black", fill="white")
 
 
 #The data for Pre and Post MPA fall under the CI for normality for the qqplots
@@ -157,31 +161,103 @@ t.test(pre_mpa$SIZE, post_mpa$SIZE, var.equal=TRUE)
 #The p-value is greater than 0.05, we fail to reject that the difference in means is 0
 #There is no significant difference in means for Pre and Post MPA kelp bass sizes  
 
+```
 
-#This is off of the raw data. Not sure which one we want to use
+```{r}
+#This is off of the raw data. Not sure which one we want to use (Sarah)
 
+##Subset the raw data to only include the sites IVEE and NAPL
 bass_size_ttest2 = bass_size[which(bass_size$SITE %in% c("IVEE", "NAPL")),]
+
+## Subset the dataset again to include the pre_mpa years (2000-2011)
 pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
+
+## Subset the data to include only the post mpa years (2012-2019)
 post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
+
+## Test if the pre_mpa sizes are normally distributed
 shapiro.test(pre_mpa2$SIZE)
 qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
 ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
+
+## Test if the pos_mpa sizes are normally distributed
 shapiro.test(post_mpa2$SIZE)
 qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
 ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
 
 
+#Since the data is NOT normally distributed we want to use a LEVENE test (instead of an F test) to test if the variances are equal. 
+## First, we wrangle the data and create a "status" column in the dataset for pre/post mpa 
 bass_size_ttest2$status <- ifelse(bass_size_ttest2$YEAR <2012, "PRE", "POST")
 
+## Then we do the levene test, which compares the size of the bass against the two conditions in the status column 
 leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
 
-
+## Since the variances are not equal we do a Welch's t test
 t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
 
+## There appears to be a significant difference! (p value less than 0.05)
+# We reject the null hypothesis that there is no difference in mean size of kelp bass pre/post mpa 
+
+## BUT. The average size of the kelp bass DECREASED after MPAs were established. This makes it appear that MPA status might decrease the average size of the kelp bass. This is interesting... 
 
 
 
+```
 
+```{r}
+# Null hypothesis: There is no difference in the average number of kelp bass over 30 cm before and afer MPA zones were established in sites IVEE and NAPL. 
+# Alt: There IS a difference in the average number of kelp bass over 30 cm before and after MPA zones were established. 
+
+
+#Create a column that identifies kelp bass as juveniles (smaller than 30 cm) and adults (over 30 cm)
+bass_size_ttest2$age <- ifelse(bass_size_ttest2$SIZE < 30, "juvenile", "adult")
+
+## Subset the data to only include adults in the dataset 
+bass_size_adult <- subset(bass_size_ttest2, bass_size_ttest2$age=="adult")
+
+## Visualize the data using a histogram to check distribution of data 
+ggplot(bass_size_adult, aes(x=SIZE))+
+  geom_histogram(binwidth = 2, color="black", fill="white")+
+  labs(x="Size (cm)")+
+  ggtitle("Size distribution of adult kelp bass inside MPAs")
+
+## Size distribution is heavily right skewed. However, since we only want the NUMBER of adults, the size distribution is irrelevant. 
+bass_adult_count = bass_size_adult %>% group_by(YEAR, status, SP_CODE) %>% 
+  summarize_at(vars(COUNT), funs(length))
+
+## Lets visualize this data using a histogram 
+ggplot(bass_adult_count, aes(x=COUNT))+
+  geom_histogram(binwidth = 5, color="black", fill="white")+
+  labs(x="Number of adult kelp bass")+
+  ggtitle("Distribution of the number of adult kelp bass")
+
+## Heavily right skewed. Perform a log transformation on count 
+bass_adult_count$logCount <- log(bass_adult_count$COUNT)
+
+## check normality 
+ggplot(bass_adult_count, aes(x=logCount))+
+  geom_histogram(binwidth = .6, color="black", fill="white")+
+  labs(x="Number of ln(adult kelp bass)")+
+  ggtitle("Distribution of the ln(number of adult kelp bass)")
+
+qqPlot(bass_adult_count$logCount)
+shapiro.test(bass_adult_count$logCount)
+
+## Split the data into pre/post mpa treatments
+PRE_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="PRE")
+POST_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="POST")
+
+## Data is normal, so I'm using an F test!
+var.test(PRE_bass_adult_count$logCount, POST_bass_adult_count$logCount)
+
+## variances are equal. Moving forward with a standard t test 
+t.test(PRE_bass_adult_count$logCount, POST_bass_adult_count$logCount)
+
+exp(1)^1.718
+exp(1)^2.637
+
+## Based on the results of the t test there IS a difference in the number of adults before and after the creation of the MPA. The number of adults increases from an average of 5.5 to an average of 14. 
 ```
 
 
