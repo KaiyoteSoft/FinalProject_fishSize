@@ -147,45 +147,45 @@ t.test(pre_mpa$SIZE, post_mpa$SIZE, var.equal=TRUE)
 
 ```{r}
 # #This is off of the raw data. Not sure which one we want to use (Sarah)
-# 
+
 # ##Subset the raw data to only include the sites IVEE and NAPL
-# bass_size_ttest2 = bass_size[which(bass_size$SITE %in% c("IVEE", "NAPL")),]
-# 
-# ## Subset the dataset again to include the pre_mpa years (2000-2011)
-# pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
-# 
-# ## Subset the data to include only the post mpa years (2012-2019)
-# post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
-# 
-# ## Test if the pre_mpa sizes are normally distributed
-# shapiro.test(pre_mpa2$SIZE)
-# qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
-# ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
-# 
-# ## Test if the pos_mpa sizes are normally distributed
-# shapiro.test(post_mpa2$SIZE)
-# qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
-# ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
-# 
-# 
-# #Since the data is NOT normally distributed we want to use a LEVENE test (instead of an F test) to test if the variances are equal. 
-# ## First, we wrangle the data and create a "status" column in the dataset for pre/post mpa 
-# bass_size_ttest2$status <- ifelse(bass_size_ttest2$YEAR <2012, "PRE", "POST")
-# 
-# ## Boxplot for pre and post average sizes
-# ggplot(bass_size_ttest2, aes(x=status, y=SIZE, fill=status))+
-#   geom_boxplot()
-# 
-# ## Then we do the levene test, which compares the size of the bass against the two conditions in the status column 
-# leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
-# 
-# ## Since the variances are not equal we do a Welch's t test
-# t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
-# 
-# ## There appears to be a significant difference! (p value less than 0.05)
-# # We reject the null hypothesis that there is no difference in mean size of kelp bass pre/post mpa 
-# 
-# ## BUT. The average size of the kelp bass DECREASED after MPAs were established. This makes it appear that MPA status might decrease the average size of the kelp bass. This is interesting... 
+bass_size_ttest2 = bass_size[which(bass_size$SITE %in% c("IVEE", "NAPL")),]
+
+## Subset the dataset again to include the pre_mpa years (2000-2011)
+pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
+
+## Subset the data to include only the post mpa years (2012-2019)
+post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
+
+## Test if the pre_mpa sizes are normally distributed
+shapiro.test(pre_mpa2$SIZE)
+qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
+ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
+
+## Test if the pos_mpa sizes are normally distributed
+shapiro.test(post_mpa2$SIZE)
+qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
+ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
+
+
+#Since the data is NOT normally distributed we want to use a LEVENE test (instead of an F test) to test if the variances are equal.
+## First, we wrangle the data and create a "status" column in the dataset for pre/post mpa
+bass_size_ttest2$status <- ifelse(bass_size_ttest2$YEAR <2012, "PRE", "POST")
+
+## Boxplot for pre and post average sizes
+ggplot(bass_size_ttest2, aes(x=status, y=SIZE, fill=status))+
+  geom_boxplot()
+
+## Then we do the levene test, which compares the size of the bass against the two conditions in the status column
+leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
+
+## Since the variances are not equal we do a Welch's t test
+t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
+
+## There appears to be a significant difference! (p value less than 0.05)
+# We reject the null hypothesis that there is no difference in mean size of kelp bass pre/post mpa
+
+## BUT. The average size of the kelp bass DECREASED after MPAs were established. This makes it appear that MPA status might decrease the average size of the kelp bass. This is interesting...
 
 
 
