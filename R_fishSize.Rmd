@@ -1,5 +1,5 @@
 ---
-title: "R_fishSize"
+title: "Effect of MPAs on Kelp Bass Size"
 output: html_document
 ---
 
@@ -13,16 +13,16 @@ library(ggplot2)
 library(car)
 ```
 
-## MPA Effect on Kelp Bass Size
+*Question: Does the protection of kelp bass from fishing through the creation of MPAs affect their average size?*
 
-### Reading in data and displaying first six lines
+**Reading in data and displaying first six lines**
 
 ```{r}
 fishData <- read.csv("Annual_fish_comb_20200108.csv")
 head(fishData)
 ```
 
-## Subsetting the data to only include kelp bass 
+**Subsetting the data to only include kelp bass** 
 
 ```{r, echo=TRUE}
 ## Subset data to only include kelp bass
@@ -55,6 +55,12 @@ ggplot(bass_avg, aes(x=YEAR, y=SIZE))+
   ggtitle("Average size of bass across sites and years")
 
 ```
+
+
+### Data wrangling and visualization section
+
+
+
 ```{r}
 ## Filter out all sites except MOHK, CARP (non MPAs) and IVEE and NAPLES (MPAs)
 bass_comp = bass_avg[which(bass_avg$SITE %in% c("MOHK", "CARP", "IVEE", "NAPL")),]
@@ -78,11 +84,16 @@ bass_size_post <- bass_size[which(bass_size$YEAR > 2011), ]
 bass_size_post$status <- ifelse(bass_size_post$SITE == "NAPL" | bass_size_post$SITE=="IVEE", "MPA", "CONTROL")
 bass_size_post <- bass_size_post[-which(bass_size_post$SITE=="SCDI" | bass_size_post$SITE=="SCTW"),]
 
-ggplot(bass_size_post, aes(x=status, y=SIZE))+
+ggplot(bass_size_post, aes(x=status, y=SIZE, fill=status))+
   geom_boxplot()+
   ggtitle("MPA vs Control: Average kelp bass size")+
   theme(plot.title = element_text(hjust=0.5))
+```
 
+<br />
+**This boxplot shows the average kelp bass size across all years. "Control" sites are those that were not designated as MPA site. Only Naples and Isla Vista were established as MPA sites.**
+
+``` {r}
 # str(bass_comp_avg)
 ##Subset the data further to only include post mpa years for inside/outside 
 bass_comp_post <- bass_comp_avg[which(bass_comp_avg$YEAR > 2012), ]
@@ -95,11 +106,15 @@ ggplot(bass_comp_post, aes(x=YEAR, y=SIZE, fill=status))+
 
 ```
 
+<br />
+**This graph shows the same data as the boxplot above, but displays the average kelp bass size inside and outside MPAs by year.** <br />
+Note that MPAs were created in **2012.** We would expect to see the average size of the kelp bass inside the MPAs to increase. However, this does not seem to be the case. 
+<br />
+<br />
 
 
+## Statistical analysis of kelp bass size inside and outside MPAs
 ```{r}
-
-
 
  ##This is the averaged data analysis
 bass_comp_ttest = bass_comp[which(bass_comp$SITE %in% c("IVEE", "NAPL")),]
@@ -111,25 +126,34 @@ post_mpa = bass_comp_ttest[which(bass_comp_ttest$YEAR %in% c("2012", "2013", "20
 ## Boxplot for pre and post average sizes
 bass_comp_ttest$status <- ifelse(bass_comp_ttest$YEAR <2012, "PRE", "POST")
 ggplot(bass_comp_ttest, aes(x=status, y=SIZE, fill=status))+
-  geom_boxplot()
+  geom_boxplot()+
+  ggtitle("Kelp bass size pre and post MPA creation")+
+  theme(plot.title = element_text(hjust=0.5))
+```
 
+##First, let's check to see if the bass sizes are normal
+``` {r}
 #Looking to see if the data is normal
 shapiro.test(pre_mpa$SIZE)
 qqPlot(pre_mpa$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
 ggplot(pre_mpa, aes(x=SIZE)) + 
-  geom_histogram(binwidth=4, color="black", fill="white")
+  geom_histogram(binwidth=4, color="black", fill="white")+
+  ggtitle("Histogram for pre-mpa fish sizes")
 
 
 shapiro.test(post_mpa$SIZE)
 qqPlot(post_mpa$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
 ggplot(post_mpa, aes(x=SIZE)) + 
-  geom_histogram(binwidth=3, color="black", fill="white")
+  geom_histogram(binwidth=3, color="black", fill="white")+
+  ggtitle("Post-mpa kelp bass sizes: Histogram")
+```
 
+**The data for Pre and Post MPA fall under the CI for normality for the qqplots** <br />
+**The p values are not smaller than 0.05 for Pre or Post MPA data, we fail to reject that data is normal** <br />
 
-#The data for Pre and Post MPA fall under the CI for normality for the qqplots
-#The p values are not smaller than 0.05 for Pre or Post MPA data, we fail to reject that data is normal
+*Next, lets test for equal variances*
 
-
+``` {r}
 #Because data appears to be normal an F-test is conducted to see if variances are equal
 var.test(pre_mpa$SIZE, post_mpa$SIZE)
 #The F test has a p-value greater than 0.05, we fail to reject that variances are equal
@@ -137,13 +161,15 @@ var.test(pre_mpa$SIZE, post_mpa$SIZE)
 
 #A two-sample t-test is conducted assuming equal variance to compare the difference in means
 t.test(pre_mpa$SIZE, post_mpa$SIZE, var.equal=TRUE)
-
-#Null hypothesis: Size does not change between MPA statuses (the difference in means is 0).
-#Alternative hypothesis: Size does change between MPA statuses (the difference in means is not 0)
-#The p-value is greater than 0.05, we fail to reject that the difference in means is 0
-#There is no significant difference in means for Pre and Post MPA kelp bass sizes  
-
 ```
+
+**Null hypothesis:** Size does not change between MPA statuses (the difference in means is 0). <br />
+**Alternative hypothesis:** Size does change between MPA statuses (the difference in means is not 0) <br />
+The p-value is greater than 0.05, we fail to reject that the difference in means is 0 <br />
+
+There **is no significant difference** in means for Pre and Post MPA kelp bass sizes  
+
+
 
 ```{r}
 # #This is off of the raw data. Not sure which one we want to use (Sarah)
@@ -151,37 +177,37 @@ t.test(pre_mpa$SIZE, post_mpa$SIZE, var.equal=TRUE)
 # ##Subset the raw data to only include the sites IVEE and NAPL
 bass_size_ttest2 = bass_size[which(bass_size$SITE %in% c("IVEE", "NAPL")),]
 
-## Subset the dataset again to include the pre_mpa years (2000-2011)
-pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
-
-## Subset the data to include only the post mpa years (2012-2019)
-post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
-
-## Test if the pre_mpa sizes are normally distributed
-shapiro.test(pre_mpa2$SIZE)
-qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
-ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
-
-## Test if the pos_mpa sizes are normally distributed
-shapiro.test(post_mpa2$SIZE)
-qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
-ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
+# ## Subset the dataset again to include the pre_mpa years (2000-2011)
+# pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
+# 
+# ## Subset the data to include only the post mpa years (2012-2019)
+# post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
+# 
+# ## Test if the pre_mpa sizes are normally distributed
+# shapiro.test(pre_mpa2$SIZE)
+# qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
+# ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
+# 
+# ## Test if the pos_mpa sizes are normally distributed
+# shapiro.test(post_mpa2$SIZE)
+# qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
+# ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
 
 
 #Since the data is NOT normally distributed we want to use a LEVENE test (instead of an F test) to test if the variances are equal.
 ## First, we wrangle the data and create a "status" column in the dataset for pre/post mpa
 bass_size_ttest2$status <- ifelse(bass_size_ttest2$YEAR <2012, "PRE", "POST")
 
-## Boxplot for pre and post average sizes
-ggplot(bass_size_ttest2, aes(x=status, y=SIZE, fill=status))+
-  geom_boxplot()
-
-## Then we do the levene test, which compares the size of the bass against the two conditions in the status column
-leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
-
-## Since the variances are not equal we do a Welch's t test
-t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
-
+# ## Boxplot for pre and post average sizes
+# ggplot(bass_size_ttest2, aes(x=status, y=SIZE, fill=status))+
+#   geom_boxplot()
+# 
+# ## Then we do the levene test, which compares the size of the bass against the two conditions in the status column
+# leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
+# 
+# ## Since the variances are not equal we do a Welch's t test
+# t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
+# 
 ## There appears to be a significant difference! (p value less than 0.05)
 # We reject the null hypothesis that there is no difference in mean size of kelp bass pre/post mpa
 
@@ -249,4 +275,3 @@ exp(1)^2.637
 ```
 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
