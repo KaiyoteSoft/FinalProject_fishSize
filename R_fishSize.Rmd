@@ -86,12 +86,12 @@ bass_size_post <- bass_size_post[-which(bass_size_post$SITE=="SCDI" | bass_size_
 
 ggplot(bass_size_post, aes(x=status, y=SIZE, fill=status))+
   geom_boxplot()+
-  ggtitle("MPA vs Control: Average kelp bass size")+
-  theme(plot.title = element_text(hjust=0.5))
+  labs(x="MPA Status", y="Average size (cm)")+
+  theme_classic()
 ```
 
 <br />
-**This boxplot shows the average kelp bass size across all years. "Control" sites are those that were not designated as MPA site. Only Naples and Isla Vista were established as MPA sites.**
+**Median kelp bass size across years. "Control" sites are the seven mainland sites that were not designated as MPA sites. Only Naples and Isla Vista reef make up the MPA treatment**
 
 ``` {r}
 # str(bass_comp_avg)
@@ -172,57 +172,33 @@ There **is no significant difference** in means for Pre and Post MPA kelp bass s
 
 
 ```{r}
-# #This is off of the raw data. Not sure which one we want to use (Sarah)
 
 # ##Subset the raw data to only include the sites IVEE and NAPL
 bass_size_ttest2 = bass_size[which(bass_size$SITE %in% c("IVEE", "NAPL")),]
 
-# ## Subset the dataset again to include the pre_mpa years (2000-2011)
-# pre_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011")),]
-# 
-# ## Subset the data to include only the post mpa years (2012-2019)
-# post_mpa2 = bass_size_ttest2[which(bass_size_ttest2$YEAR %in% c("2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019")),]
-# 
-# ## Test if the pre_mpa sizes are normally distributed
-# shapiro.test(pre_mpa2$SIZE)
-# qqPlot(pre_mpa2$SIZE, main = "Pre MPA qqPlot", ylab = "Fish Size Data")
-# ggplot(pre_mpa2, aes(x=SIZE)) + geom_histogram()
-# 
-# ## Test if the pos_mpa sizes are normally distributed
-# shapiro.test(post_mpa2$SIZE)
-# qqPlot(post_mpa2$SIZE, main = "Post MPA qqPlot", ylab = "Fish Size Data")
-# ggplot(post_mpa2, aes(x=SIZE)) + geom_histogram()
 
-
-#Since the data is NOT normally distributed we want to use a LEVENE test (instead of an F test) to test if the variances are equal.
 ## First, we wrangle the data and create a "status" column in the dataset for pre/post mpa
 bass_size_ttest2$status <- ifelse(bass_size_ttest2$YEAR <2012, "PRE", "POST")
-
-# ## Boxplot for pre and post average sizes
-# ggplot(bass_size_ttest2, aes(x=status, y=SIZE, fill=status))+
-#   geom_boxplot()
-# 
-# ## Then we do the levene test, which compares the size of the bass against the two conditions in the status column
-# leveneTest(bass_size_ttest2$SIZE, bass_size_ttest2$status)
-# 
-# ## Since the variances are not equal we do a Welch's t test
-# t.test(pre_mpa2$SIZE, post_mpa2$SIZE, var.equal=FALSE)
-# 
-## There appears to be a significant difference! (p value less than 0.05)
-# We reject the null hypothesis that there is no difference in mean size of kelp bass pre/post mpa
-
-## BUT. The average size of the kelp bass DECREASED after MPAs were established. This makes it appear that MPA status might decrease the average size of the kelp bass. This is interesting...
-
 
 
 ```
 
-#ADDITIONAL ANALYSIS
+<br />
+
+
+
+# ADDITIONAL ANALYSIS 
+<br />
+Our initial analysis suggested that the average size of the kelp bass **did not change** after MPAs were established. This makes it appear that MPAs had **no effect** on kelp bass size. However, we wanted to do some additional testing and look at the number of kelp bass before and after MPA zones were established. 
+
+<br />
+**Null hypothesis:** There is no difference in the average number of kelp bass over 30 cm before and afer MPA zones were established in sites IVEE and NAPL. <br />
+**Alternative hypothesis:** There IS a difference in the average number of kelp bass over 30 cm before and after MPA zones were established. <br />
+
+Only kelp bass over 14 inches (34 cm) can be eaten by fishermen. Therefore, there should be few kelp bass over this legal limit. However, no kelp bass can be taken out of MPAs, and we would expect the number of large fish over 30cm to **increase.**
+
 
 ```{r}
-# Null hypothesis: There is no difference in the average number of kelp bass over 30 cm before and afer MPA zones were established in sites IVEE and NAPL. 
-# Alt: There IS a difference in the average number of kelp bass over 30 cm before and after MPA zones were established. 
-
 
 #Create a column that identifies kelp bass as juveniles (smaller than 30 cm) and adults (over 30 cm)
 bass_size_ttest2$age <- ifelse(bass_size_ttest2$SIZE < 30, "juvenile", "adult")
@@ -235,8 +211,11 @@ ggplot(bass_size_adult, aes(x=SIZE))+
   geom_histogram(binwidth = 2, color="black", fill="white")+
   labs(x="Size (cm)")+
   ggtitle("Size distribution of adult kelp bass inside MPAs")
+```
 
-## Size distribution is heavily right skewed. However, since we only want the NUMBER of adults, the size distribution is irrelevant. 
+### Size distribution is heavily right skewed. However, since we only want the NUMBER of adults, the size distribution is irrelevant. 
+
+``` {r}
 bass_adult_count = bass_size_adult %>% group_by(YEAR, status, SP_CODE) %>% 
   summarize_at(vars(COUNT), funs(length))
 
@@ -245,8 +224,11 @@ ggplot(bass_adult_count, aes(x=COUNT))+
   geom_histogram(binwidth = 5, color="black", fill="white")+
   labs(x="Number of adult kelp bass")+
   ggtitle("Distribution of the number of adult kelp bass")
+```
 
-## Heavily right skewed. Perform a log transformation on count 
+### The data is heavily right skewed. We must perform a log transformation on the "count" variable.
+
+``` {r}
 bass_adult_count$logCount <- log(bass_adult_count$COUNT)
 
 ## check normality 
@@ -257,7 +239,11 @@ ggplot(bass_adult_count, aes(x=logCount))+
 
 qqPlot(bass_adult_count$logCount)
 shapiro.test(bass_adult_count$logCount)
+```
 
+The shapiro test returns a p value greater than 0.05. We **cannot reject** the null hypothesis that the data is normally distributed. We move forward with our analysis. 
+
+``` {r}
 ## Split the data into pre/post mpa treatments
 PRE_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="PRE")
 POST_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="POST")
@@ -267,11 +253,31 @@ var.test(PRE_bass_adult_count$logCount, POST_bass_adult_count$logCount)
 
 ## variances are equal. Moving forward with a standard t test 
 t.test(PRE_bass_adult_count$logCount, POST_bass_adult_count$logCount)
+```
 
+Since the "count" data was log transformed we need to convert it back to do analysis
+``` {r}
 exp(1)^1.718
 exp(1)^2.637
+```
+
 
 ## Based on the results of the t test there IS a difference in the number of adults before and after the creation of the MPA. The number of adults increases from an average of 5.5 to an average of 14. 
+
+```{r}
+## Compare the number of kelp bass over 30 cm pre and post MPA establishment 
+
+str(bass_adult_count)
+bass_adult_count$status <- factor(bass_adult_count$status, levels=unique(bass_adult_count$status))
+
+
+ggplot(bass_adult_count, aes(x=status, y=COUNT, fill=status))+
+geom_boxplot()+
+labs(x="MPA Status")+
+ylim(0,30)+
+theme_classic()
+
 ```
+
 
 
