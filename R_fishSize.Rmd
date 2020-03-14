@@ -244,13 +244,13 @@ qqPlot(bass_adult_count$logCount)
 The shapiro test returns a p value greater than 0.05. We **cannot reject** the null hypothesis that the data is normally distributed. We move forward with our analysis. 
 
 ``` {r}
-## Shapiro test on log transformed data 
-shapiro.test(PRE_bass_adult_count$logCount)
-shapiro.test(POST_bass_adult_count$logCount)
-
 ## Split the data into pre/post mpa treatments
 PRE_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="PRE")
 POST_bass_adult_count <- subset(bass_adult_count, bass_adult_count$status=="POST")
+
+## Shapiro test on log transformed data 
+shapiro.test(PRE_bass_adult_count$logCount)
+shapiro.test(POST_bass_adult_count$logCount)
 
 ## Data is normal, so I'm using an F test!
 var.test(PRE_bass_adult_count$logCount, POST_bass_adult_count$logCount)
